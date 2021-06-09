@@ -15,6 +15,7 @@ class CreateUserActivityLogsTable extends Migration
     {
         Schema::create('user_activity_logs', function (Blueprint $table) {
             $table->id();
+            $table->cin();
             $table->string('user_name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();

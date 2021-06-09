@@ -27,11 +27,11 @@ class UserManagementController extends Controller
         {
             return redirect()->route('home');
         }
-        
+
     }
-    // view detail 
+    // view detail
     public function viewDetail($id)
-    {  
+    {
         if (Auth::user()->role_name=='Admin')
         {
             $data = DB::table('users')->where('id',$id)->get();
@@ -62,7 +62,7 @@ class UserManagementController extends Controller
     {
         return view('usermanagement.profile_user');
     }
-   
+
     // add new user
     public function addNewUser()
     {
@@ -74,6 +74,7 @@ class UserManagementController extends Controller
      {
 
         $request->validate([
+            'cin'       => 'required|numeric|min:8',
             'name'      => 'required|string|max:255',
             'image'     => 'required|image',
             'email'     => 'required|string|email|max:255|unique:users',
@@ -83,23 +84,24 @@ class UserManagementController extends Controller
             'password_confirmation' => 'required',
         ]);
 
-        $image = time().'.'.$request->image->extension();  
+        $image = time().'.'.$request->image->extension();
         $request->image->move(public_path('images'), $image);
 
         $user = new User;
+        $user->cin        = $request->cin;
         $user->name         = $request->name;
         $user->avatar       = $image;
         $user->email        = $request->email;
         $user->phone_number = $request->phone;
         $user->role_name    = $request->role_name;
         $user->password     = Hash::make($request->password);
- 
+
         $user->save();
 
-        Toastr::success('Create new account successfully :)','Success');
+        Toastr::success('Nouveau compte créé avec succès:)','Succès');
         return redirect()->route('userManagement');
     }
-    
+
     // update
     public function update(Request $request)
     {
@@ -112,7 +114,7 @@ class UserManagementController extends Controller
 
         $dt       = Carbon::now();
         $todayDate = $dt->toDayDateTimeString();
-        
+
         $old_image = User::find($id);
 
         $image_name = $request->hidden_image;
@@ -127,7 +129,7 @@ class UserManagementController extends Controller
             }
         }
         else{
-            
+
             if($image != '')
             {
                 $image_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -135,8 +137,8 @@ class UserManagementController extends Controller
                 unlink('images/'.$old_image->avatar);
             }
         }
-        
-        
+
+
         $update = [
 
             'id'           => $id,
@@ -161,7 +163,7 @@ class UserManagementController extends Controller
 
         DB::table('user_activity_logs')->insert($activityLog);
         User::where('id',$request->id)->update($update);
-        Toastr::success('User updated successfully :)','Success');
+        Toastr::success("Mise à jour réussie de l'utilisateur :)",'Succès');
         return redirect()->route('userManagement');
     }
     // delete
@@ -170,7 +172,7 @@ class UserManagementController extends Controller
         $user = Auth::User();
         Session::put('user', $user);
         $user=Session::get('user');
-
+        $cin          = $user->cin;
         $fullName     = $user->name;
         $email        = $user->email;
         $phone_number = $user->phone_number;
@@ -182,6 +184,7 @@ class UserManagementController extends Controller
 
         $activityLog = [
 
+            'cin'          => $cin,
             'user_name'    => $fullName,
             'email'        => $email,
             'phone_number' => $phone_number,
@@ -205,7 +208,7 @@ class UserManagementController extends Controller
     {
         return view('usermanagement.change_password');
     }
-    
+
     // change password in db
     public function changePasswordDB(Request $request)
     {
@@ -214,16 +217,12 @@ class UserManagementController extends Controller
             'new_password' => ['required'],
             'new_confirm_password' => ['same:new_password'],
         ]);
-   
+
         User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
         Toastr::success('User change successfully :)','Success');
         return redirect()->route('home');
     }
 }
-
-
-
-
 
 
 

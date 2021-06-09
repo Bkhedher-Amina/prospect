@@ -12,39 +12,39 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-title">Menu</li>
+
+
                 <li class="sidebar-item">
                     <a href="{{ route('home') }}" class='sidebar-link'>
                         <i class="bi bi-house-fill"></i>
-                        <span>Dashboard</span>
+                        <span>Tableau de Bord</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <div class="card-body">
                         <div class="badges">
                             @if (Auth::user()->role_name=='Admin')
-                            <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
+                            <span>Nom: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                             <hr>
-                            <span>Role Name:</span>
-                            <span class="badge bg-success">Admin</span>
+                            <span>Role:</span>
+                            <span class="badge bg-success">Administrateur</span>
                             @endif
-                            @if (Auth::user()->role_name=='Super Admin')
-                                <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
+                            @if (Auth::user()->role_name=='Manager')
+                                <span>Nom: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                                 <hr>
-                                <span>Role Name:</span>
-                                <span class="badge bg-info">Super Admin</span>
+                                <span>Role:</span>
+                                <span class="badge bg-info">Manager</span>
                             @endif
-                            @if (Auth::user()->role_name=='Normal User')
-                                <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
+                            @if (Auth::user()->role_name=='Commercial')
+                                <span>Nom: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                                 <hr>
-                                <span>Role Name:</span>
-                                <span class="badge bg-warning">User Normal</span>
+                                <span>Role:</span>
+                                <span class="badge bg-warning">Commercial</span>
                             @endif
                         </div>
                     </div>
                 </li>
-
-                <li class="sidebar-item active">
+                <li class="sidebar-item">
                     <a href="{{ route('change/password') }}" class='sidebar-link'>
                         <i class="bi bi-shield-lock"></i>
                         <span>Chnage Password</span>
@@ -52,26 +52,75 @@
                 </li>
 
                 @if (Auth::user()->role_name=='Admin')
-                    <li class="sidebar-title">Page &amp; Controller</li>
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-hexagon-fill"></i>
-                            <span>Maintenain</span>
-                        </a>
-                        <ul class="submenu">
-                            <li class="submenu-item">
-                                <a href="{{ route('userManagement') }}">User Control</a>
-                            </li>
-                            <li class="submenu-item">
-                                <a href="{{ route('activity/log') }}">User Activity Log</a>
-                            </li>
-                            <li class="submenu-item">
-                                <a href="{{ route('activity/login/logout') }}">Activity Log</a>
-                            </li>
-                        </ul>
+                <li class="sidebar-title">Gestion</li>
+                <li class="sidebar-item  has-sub active">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-people"></i>
+                        <span>Utilisateurs</span>
+                    </a>
+                    <ul class="submenu active">
+                        <li class="submenu-item active">
+                            <a href="{{ route('userManagement') }}">Listes Des Utilisateurs</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('activity/log') }}">Nouvelle Utilisateur</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('activity/log') }}">Activitées des Utilisateurs</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('activity/login/logout') }}">Activitées de Connexion</a>
+                        </li>
+                    </ul>
+
+                </li>
+                <li class="sidebar-item  has-sub active">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-bag"></i>
+                        <span>Achats</span>
+                    </a>
+                    <ul class="submenu active">
+                        <li class="submenu-item active">
+                            <a href="{{ route('userManagement') }}">Listes Des Achats</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('activity/log') }}">Nouvelle Achat</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+                <li class="sidebar-item  has-sub active">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-receipt"></i>
+                        <span>Ventes</span>
+                    </a>
+                    <ul class="submenu active">
+                        <li class="submenu-item active">
+                            <a href="{{ route('userManagement') }}">Listes Des Ventes</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('activity/log') }}">Nouvelle Vente</a>
+                        </li>
+                    </ul>
+               </li>
+               <li class="sidebar-item  has-sub active">
+                <a href="#" class='sidebar-link'>
+                    <i class="bi bi-shop-window"></i>
+                    <span>Stock</span>
+                </a>
+                <ul class="submenu active">
+                    <li class="submenu-item active">
+                        <a href="{{ route('userManagement') }}">Listes Des Produits</a>
                     </li>
-                @endif
-                
+                    <li class="submenu-item">
+                        <a href="{{ route('activity/log') }}">Nouvelle Produit</a>
+                    </li>
+                </ul>
+           </li>
+
+            @endif
+
                 <li class="sidebar-title">Forms &amp; Tables</li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
@@ -98,7 +147,7 @@
                 <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-right"></i>
-                        <span>Log Out</span>
+                        <span>Se Déconnecter</span>
                     </a>
                 </li>
             </ul>

@@ -87,3 +87,19 @@ Route::get('form/view/detail', [App\Http\Controllers\FormController::class, 'vie
 Route::get('form/view/detail/{id}', [App\Http\Controllers\FormController::class, 'viewDetail'])->middleware('auth');
 Route::post('form/view/update', [App\Http\Controllers\FormController::class, 'viewUpdate'])->name('form/view/update');
 Route::get('delete/{id}', [App\Http\Controllers\FormController::class, 'viewDelete'])->middleware('auth');
+
+//---------------------------- approved users----------------------------//
+Route::middleware(['approved'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
+
+// ----------------------------- GESTION ACHAT -----------------------//
+// ----------------------------- Commande Fournisseur -----------------------//
+Route::get('commandefournisseur', [App\Http\Controllers\GestionAchats\CommandeFournisseurController::class, 'index'])->middleware('auth')->name('commandefournisseur');
+Route::get('gestionachat/ajouterCommandefournisseur/nouveau', [App\Http\Controllers\GestionAchats\CommandeFournisseurController::class, 'addNewCommandeFournisseur'])->middleware('auth')->name('gestionachat/ajouterfournisseur/nouveau');
+Route::post('gestionachat/ajouterCommandefournisseur/enregistrer', [App\Http\Controllers\GestionAchats\CommandeFournisseurController::class, 'addNewCommandeFenregistrer'])->name('gestionachat/ajouterCommandefournisseur/enregistrer');
+Route::get('gestionachat/ConsulterCommandefournisseur/{id}', [App\Http\Controllers\GestionAchats\CommandeFournisseurController::class, 'ConsulterCommandefournisseur'])->middleware('auth');
+Route::post('update', [App\Http\Controllers\GestionAchats\CommandeFournisseurController::class, 'update'])->name('update');
+Route::get('delete_user/{id}', [App\Http\Controllers\GestionAchats\CommandeFournisseurController::class, 'delete'])->middleware('auth');
+
+

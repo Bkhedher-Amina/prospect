@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('menu')
-@extends('sidebar.user_activity_log')
+@extends('sidebar.Dashboard')
 @endsection
 @section('content')
 <div id="main">
@@ -13,14 +13,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>User Activity Log</h3>
-                    <p class="text-subtitle text-muted">For user log list</p>
+                    <h3> Activité des utilisateurs Connecté</h3>
+                    <p class="text-subtitle text-muted"> liste d'activité des utilisateurs Connecté</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">User Activity Log</li>
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">tableau de bord</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Activitée des utilisateurs Connecté</li>
                         </ol>
                     </nav>
                 </div>
@@ -29,21 +29,21 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    Log Datatable
+                    Tableau de données de connexion
                 </div>
                 <div class="card-body">
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Full Name</th>
-                                <th>Email Address</th>
-                                <th>Phone Number</th>
+                                <th>Nom Et Prénom</th>
+                                <th>Address Email</th>
+                                <th>Numéro portable</th>
                                 <th>Status</th>
-                                <th>Role Name</th>
-                                <th>Modify</th>
-                                <th>Date Time</th>
-                            </tr>    
+                                <th>Role </th>
+                                <th>Modifier</th>
+                                <th>Date Temp</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach ($activityLog as $key => $item)
@@ -67,11 +67,11 @@
     <footer>
         <div class="footer clearfix mb-0 text-muted ">
             <div class="float-start">
-                <p>2021 &copy; Soeng Souy</p>
+                <p>2021 &copy; Web Prospect</p>
             </div>
             <div class="float-end">
                 <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                href="http://soengsouy.com">Soeng Souy</a></p>
+                href="https://www.webprospect.tn/">Web Prospect</a></p>
             </div>
         </div>
     </footer>

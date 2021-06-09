@@ -12,27 +12,27 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Form Input Information</h3>
-                <p class="text-subtitle text-muted">form information</p>
+                <h3>Informations de saisie de formulaire</h3>
+                <p class="text-subtitle text-muted">Saisie de Formulaire  </p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Form Input</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Tableau De Bord</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Saisie de formulairet</li>
                     </ol>
                 </nav>
             </div>
         </div>
     </div>
-    
+
     {{-- message --}}
     {!! Toastr::message() !!}
 
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Input Information</h4>
+                <h4 class="card-title">Informations d'entrée</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
@@ -41,7 +41,7 @@
                         <div class="form-body">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label>Full Name</label>
+                                    <label>Nom et Prénom</label>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group has-icon-left">
@@ -61,26 +61,22 @@
                                 <div class="col-md-8">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="sex" value="Male" id="male">
-                                        <label class="form-check-label" for="male">Male</label>
+                                        <label class="form-check-label" for="male">Homme</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="sex" value="Female" id="male">
-                                        <label class="form-check-label" for="male">Female</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sex" value="Other" id="male">
-                                        <label class="form-check-label" for="male">Other</label>
+                                        <label class="form-check-label" for="male">Femme</label>
                                     </div>
                                 </div>
-    
+
                                 <div class="col-md-4">
-                                    <label>Email Address</label>
+                                    <label>Adresse Email</label>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group has-icon-left">
                                         <div class="position-relative">
                                             <input type="email" class="form-control @error('emailAddress') is-invalid @enderror" value="{{ old('emailAddress') }}"
-                                                placeholder="Enter email" id="first-name-icon" name="emailAddress">
+                                                placeholder="Entrer email" id="first-name-icon" name="emailAddress">
                                             <div class="form-control-icon">
                                                 <i class="bi bi-envelope"></i>
                                             </div>
@@ -88,28 +84,28 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <label>Mobile Number</label>
+                                    <label>Numéro de portable</label>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group has-icon-left">
                                         <div class="position-relative">
                                             <input type="number" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}"
-                                                placeholder="Enter phone number" name="phone_number">
+                                                placeholder="Entrer le numéro de téléphone" name="phone_number">
                                             <div class="form-control-icon">
                                                 <i class="bi bi-phone"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-    
+
                                 <div class="col-md-4">
-                                    <label>Position</label>
+                                    <label>Poste</label>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group has-icon-left">
                                         <div class="position-relative">
                                             <input type="text" class="form-control @error('position') is-invalid @enderror" value="{{ old('position') }}"
-                                                placeholder="Enter position" name="position">
+                                                placeholder="Enter le poste" name="position">
                                             <div class="form-control-icon">
                                                 <i class="bi bi-person-badge-fill"></i>
                                             </div>
@@ -130,7 +126,7 @@
                                         </div>
                                     </div>
                                 </div>
-    
+
                                 <div class="col-md-4">
                                     <label>Salary</label>
                                 </div>
@@ -147,8 +143,8 @@
                                 </div>
 
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
-                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Cannel</button>
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">Enregistrer</button>
+                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Annuler</button>
                                 </div>
                             </div>
                         </div>

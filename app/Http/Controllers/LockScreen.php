@@ -8,7 +8,7 @@ use Session;
 use Brian2694\Toastr\Facades\Toastr;
 
 class LockScreen extends Controller
-{    
+{
     // lock screen
     public function lockScreen()
     {
@@ -23,7 +23,7 @@ class LockScreen extends Controller
         }
         return view('lockscreen.lockscreen');
     }
-    
+
     // unlock screen
     public function unlock(Request $request)
     {
@@ -34,7 +34,7 @@ class LockScreen extends Controller
 
         if(!$check)
         {
-            Toastr::error('fail, Your password does not match :)','Error');
+            Toastr::error('échouer, Votre mot de passe ne correspond pas :(','Erreur');
             return redirect()->route('lock_screen');
         }
         session(['lock-expires-at' => now()->addMinutes($request->user()->getLockoutTime())]);

@@ -63,16 +63,16 @@ class FormController extends Controller
             // return dd($update);
 
             Staff::where('id',$request->id)->update($update);
-            Toastr::success('Data updated successfully :)','Success');
+            Toastr::success('Données mises à jour avec succès :)','Succès');
             return redirect()->route('form/view/detail');
         }catch(\Exception $e){
 
-            Toastr::error('Data updated fail :)','Error');
+            Toastr::error('Échec de la mise à jour des données :(','Erreur');
             return redirect()->route('form/view/detail');
         }
     }
 
-    // save 
+    // save
     public function saveRecord(Request $request)
     {
         $request->validate([
@@ -103,12 +103,12 @@ class FormController extends Controller
             $Staff->salary        = $salary;
             $Staff->save();
 
-            Toastr::success('Data added successfully :)','Success');
+            Toastr::success('Données ajoutées avec succès :)','Succès');
             return redirect()->back();
 
         }catch(\Exception $e){
 
-            Toastr::error('Data added fail :)','Error');
+            Toastr::error("Échec de l'ajout de données :)",'Erreur');
             return redirect()->back();
         }
     }
@@ -118,7 +118,7 @@ class FormController extends Controller
     {
         $delete = Staff::find($id);
         $delete->delete();
-        Toastr::success('Data deleted successfully :)','Success');
+        Toastr::success('Données effacées avec succès :)','Succès');
         return redirect()->route('form/view/detail');
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('menu')
-@extends('sidebar.usermanagement')
+@extends('sidebar.Dashboard')
 @endsection
 @section('content')
 <div id="main">
@@ -13,14 +13,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>User Management Control</h3>
-                    <p class="text-subtitle text-muted">For user to check they list</p>
+                    <h3>Liste Des Utilisateurs</h3>
+
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">User Mangement</li>
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Tableau De bord</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Liste des utilisateurs</li>
                         </ol>
                     </nav>
                 </div>
@@ -31,26 +31,28 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    User Datatable
+                    Tableau des données sur les utilisateurs
                 </div>
                 <div class="card-body">
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Full Name</th>
+                                <th> CIN</th>
+                                <th>Nom Et Prénom</th>
                                 <th>Profile</th>
-                                <th>Email Address</th>
-                                <th>Phone Number</th>
-                                <th>Status</th>
-                                <th>Role Name</th>
-                                <th class="text-center">Modify</th>
-                            </tr>    
+                                <th>Address Email</th>
+                                <th>Numéro Portable</th>
+                                <th>Statut</th>
+                                <th>Role</th>
+                                <th class="text-center">Modifier</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $key => $item)
                                 <tr>
                                     <td class="id">{{ ++$key }}</td>
+                                    <td class="cin">{{ $item->cin }}</td>
                                     <td class="name">{{ $item->name }}</td>
                                     <td class="name">
                                         <div class="avatar avatar-xl">
@@ -71,20 +73,21 @@
                                     @if($item->role_name =='Admin')
                                     <td class="role_name"><span  class="badge bg-success">{{ $item->role_name }}</span></td>
                                     @endif
-                                    @if($item->role_name =='Super Admin')
+                                    @if($item->role_name =='Manager')
                                     <td class="role_name"><span  class="badge bg-info">{{ $item->role_name }}</span></td>
                                     @endif
-                                    @if($item->role_name =='Normal User')
+                                    @if($item->role_name =='Commercial')
                                     <td class="role_name"><span  class=" badge bg-warning">{{ $item->role_name }}</span></td>
                                     @endif
                                     <td class="text-center">
-                                        <a href="{{ route('user/add/new') }}">
+                                       <!-- <a href="{{ route('user/add/new') }}">
                                             <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
                                         </a>
+                                        -->
                                         <a href="{{ url('view/detail/'.$item->id) }}">
                                             <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
-                                        </a>  
-                                        <a href="{{ url('delete_user/'.$item->id) }}" onclick="return confirm('Are you sure to want to delete it?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
+                                        </a>
+                                        <a href="{{ url('delete_user/'.$item->id) }}" onclick="return confirm('Etes-vous sûr de la supprimer?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -97,11 +100,11 @@
     <footer>
         <div class="footer clearfix mb-0 text-muted ">
             <div class="float-start">
-                <p>2021 &copy; Soeng Souy</p>
+                <p>2021 &copy; Web Prospect</p>
             </div>
             <div class="float-end">
                 <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                href="http://soengsouy.com">Soeng Souy</a></p>
+                href="https://www.webprospect.tn/">Web Prospect</a></p>
             </div>
         </div>
     </footer>

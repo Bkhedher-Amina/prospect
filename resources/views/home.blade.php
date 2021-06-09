@@ -10,7 +10,7 @@
         </a>
     </header>
     <div class="page-heading">
-        <h3>Profile Statistics</h3>
+        <h3>Statistiques des profiles</h3>
     </div>
     {{-- message --}}
     {!! Toastr::message() !!}
@@ -28,7 +28,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Activity Log</h6>
+                                        <h6 class="text-muted font-semibold">Activité de connexion</h6>
                                         <h6 class="font-extrabold mb-0">{{ $activity_logs }}</h6>
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">User Activity log</h6>
+                                        <h6 class="text-muted font-semibold">Activité des utilisateurs connecté</h6>
                                         <h6 class="font-extrabold mb-0">{{ $user_activity_logs }}</h6>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">User Total</h6>
+                                        <h6 class="text-muted font-semibold">Total utilisateurs</h6>
                                         <h6 class="font-extrabold mb-0">{{ $users }}</h6>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Saved Record</h6>
+                                        <h6 class="text-muted font-semibold">Les Enregistrement enregistré</h6>
                                         <h6 class="font-extrabold mb-0">{{ $staff }}</h6>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Profile Visit</h4>
+                                <h4>Visites de profil</h4>
                             </div>
                             <div class="card-body">
                                 <div id="chart-profile-visit"></div>
@@ -103,7 +103,7 @@
                     <div class="col-12 col-xl-4">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Profile Visit</h4>
+                                <h4>Visites de profi</h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -282,7 +282,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                
+
                                             <div class="col-md-4">
                                                 <label>Status</label>
                                             </div>
@@ -378,11 +378,11 @@
     <footer>
         <div class="footer clearfix mb-0 text-muted">
             <div class="float-start">
-                <p>2021 &copy; Soeng Souy</p>
+                <p>2021 &copy; Web Prospect</p>
             </div>
             <div class="float-end">
-                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                href="http://soengsouy.com">Soeng Souy</a></p>
+                <p>Créé par<span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                href="https://www.webprospect.tn/">Web Prospect</a></p>
             </div>
         </div>
     </footer>

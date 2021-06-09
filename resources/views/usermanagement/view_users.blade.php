@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('menu')
-@extends('sidebar.usermanagement')
+@extends('sidebar.Dashboard')
 @endsection
 @section('content')
 <div id="main">
@@ -15,7 +15,7 @@
         }
 
     </style>
-    
+
     <header class="mb-3">
         <a href="#" class="burger-btn d-block d-xl-none">
             <i class="bi bi-justify fs-3"></i>
@@ -25,23 +25,23 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>User Management View</h3>
-                    <p class="text-subtitle text-muted">For user to check they list</p>
+                    <h3>Gestion des utilisateurs</h3>
+
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">User Mangement View</li>
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Tableau de Bord</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Gestion des utilisateurs</li>
                         </ol>
                     </nav>
                 </div>
             </div>
-        </div> 
+        </div>
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">User View Detial</h4>
+                    <h4 class="card-title">Listes des Utilisateurs</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
@@ -51,7 +51,21 @@
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label>Full Name</label>
+                                        <label>Numéro De CIN</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control"
+                                                    placeholder="Numéro cin" id="first-name-icon" name="fullName" value="{{ $data[0]->cin }}">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-person-lines-fill"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Nom Et Prénom</label>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="form-group has-icon-left">
@@ -82,7 +96,7 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <label>Email Address</label>
+                                        <label>Addresse Email</label>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="form-group has-icon-left">
@@ -96,7 +110,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <label>Mobile Number</label>
+                                        <label>Numéro Portable</label>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="form-group has-icon-left">
@@ -109,20 +123,20 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <div class="col-md-4">
-                                        <label>Status</label>
+                                        <label>Statut</label>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="form-group position-relative has-icon-left mb-4">
                                             <fieldset class="form-group">
                                                 <select class="form-select" name="status" id="status">
-                                                    <option value="{{ $data[0]->status }}" {{ ( $data[0]->status == $data[0]->status) ? 'selected' : ''}}> 
+                                                    <option value="{{ $data[0]->status }}" {{ ( $data[0]->status == $data[0]->status) ? 'selected' : ''}}>
                                                         {{ $data[0]->status }}
                                                     </option>
                                                     @foreach ($userStatus as $key => $value)
                                                     <option value="{{ $value->type_name }}"> {{ $value->type_name }}</option>
-                                                    @endforeach  
+                                                    @endforeach
                                                 </select>
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-bag-check"></i>
@@ -133,18 +147,18 @@
 
 
                                     <div class="col-md-4">
-                                        <label>Role Name</label>
+                                        <label>Role</label>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="form-group position-relative has-icon-left mb-4">
                                             <fieldset class="form-group">
                                                 <select class="form-select" name="role_name" id="role_name">
-                                                    <option value="{{ $data[0]->role_name }}" {{ ( $data[0]->role_name == $data[0]->role_name) ? 'selected' : ''}}> 
+                                                    <option value="{{ $data[0]->role_name }}" {{ ( $data[0]->role_name == $data[0]->role_name) ? 'selected' : ''}}>
                                                         {{ $data[0]->role_name }}
                                                     </option>
                                                     @foreach ($roleName as $key => $value)
                                                     <option value="{{ $value->role_type }}"> {{ $value->role_type }}</option>
-                                                    @endforeach  
+                                                    @endforeach
                                                 </select>
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-bag-check"></i>
@@ -155,9 +169,9 @@
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit"
-                                            class="btn btn-primary me-1 mb-1">Update</button>
+                                            class="btn btn-primary me-1 mb-1">Mettre à jour</button>
                                         <a  href="{{ route('userManagement') }}"
-                                            class="btn btn-light-secondary me-1 mb-1">Back</a>
+                                            class="btn btn-light-secondary me-1 mb-1">Retour</a>
                                     </div>
                                 </div>
                             </div>
@@ -170,11 +184,11 @@
     <footer>
         <div class="footer clearfix mb-0 text-muted ">
             <div class="float-start">
-                <p>2021 &copy; Soeng Souy</p>
+                <p>2021 &copy; Web Prospect</p>
             </div>
             <div class="float-end">
                 <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                href="http://soengsouy.com">Soeng Souy</a></p>
+                href="https://www.webprospect.tn/">Web Prospect</a></p>
             </div>
         </div>
     </footer>
